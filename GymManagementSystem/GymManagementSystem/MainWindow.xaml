@@ -1,0 +1,549 @@
+﻿<Window x:Class="GymManagementSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gym Management System" Height="600" Width="1000"
+        Background="#F5F5F5">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Title -->
+            <RowDefinition Height="*"/>
+            <!-- Tabs and Content -->
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Text="Gym Management System" 
+                   FontSize="32" 
+                   FontWeight="Bold" 
+                   Foreground="#333333" 
+                   Margin="20" 
+                   Grid.Row="0" 
+                   Grid.Column="0" 
+                   Grid.ColumnSpan="2"
+                   VerticalAlignment="Center"/>
+
+        <!-- Tabs and Content -->
+        <TabControl Grid.Row="1" Margin="20">
+            <!-- Customers Tab -->
+            <TabItem Header="Customers">
+                <Grid>
+                    <!-- Form and Buttons -->
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- Form and Buttons -->
+                            <RowDefinition Height="*"/>
+                            <!-- DataGrid -->
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Form and Buttons -->
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Input Fields -->
+                            <StackPanel Orientation="Vertical" Margin="0" Grid.Column="0" HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Label Content="Name:" VerticalAlignment="Center" Width="100"/>
+                                    <TextBox x:Name="txtName" 
+                                             Tag="Name" 
+                                             Margin="0,0,0,0" 
+                                             Padding="12" 
+                                             FontSize="16" 
+                                             Width="350" 
+                                             BorderBrush="#B0BEC5" 
+                                             BorderThickness="1"
+                                             Background="White"
+                                             Foreground="#333333"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Label Content="Age:" VerticalAlignment="Center" Width="100"/>
+                                    <TextBox x:Name="txtAge" 
+                                             Tag="Age" 
+                                             Margin="0,0,0,0" 
+                                             Padding="12" 
+                                             FontSize="16" 
+                                             Width="350" 
+                                             BorderBrush="#B0BEC5" 
+                                             BorderThickness="1"
+                                             Background="White"
+                                             Foreground="#333333"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Label Content="Gender:" VerticalAlignment="Center" Width="100"/>
+                                    <ComboBox x:Name="cmbGender" 
+                                              Margin="0,0,0,0" 
+                                              Padding="12" 
+                                              FontSize="16" 
+                                              Width="350" 
+                                              BorderBrush="#B0BEC5" 
+                                              BorderThickness="1"
+                                              Background="White"
+                                              Foreground="#333333">
+                                        <ComboBoxItem Content="Male"/>
+                                        <ComboBoxItem Content="Female"/>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Label Content="Email:" VerticalAlignment="Center" Width="100"/>
+                                    <TextBox x:Name="txtEmail" 
+                                             Tag="Email" 
+                                             Margin="0,0,0,0" 
+                                             Padding="12" 
+                                             FontSize="16" 
+                                             Width="350" 
+                                             BorderBrush="#B0BEC5" 
+                                             BorderThickness="1"
+                                             Background="White"
+                                             Foreground="#333333"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Label Content="Phone:" VerticalAlignment="Center" Width="100"/>
+                                    <TextBox x:Name="txtPhone" 
+                                             Tag="Phone" 
+                                             Margin="0,0,0,0" 
+                                             Padding="12" 
+                                             FontSize="16" 
+                                             Width="350" 
+                                             BorderBrush="#B0BEC5" 
+                                             BorderThickness="1"
+                                             Background="White"
+                                             Foreground="#333333"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Buttons -->
+                            <StackPanel Orientation="Vertical" 
+                                        Margin="0,0,20,0" 
+                                        Grid.Column="1"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right">
+                                <Button Content="Add Customer" 
+                                        Margin="0,0,0,10" 
+                                        Padding="15" 
+                                        FontSize="16" 
+                                        Width="200" 
+                                        Background="#4CAF50" 
+                                        Foreground="White" 
+                                        BorderBrush="#4CAF50" 
+                                        BorderThickness="1" 
+                                        Click="AddCustomer_Click"
+                                        Cursor="Hand"
+                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"/>
+                                <Button Content="Update Customer" 
+                                        Margin="0,0,0,10" 
+                                        Padding="15" 
+                                        FontSize="16" 
+                                        Width="200" 
+                                        Background="#2196F3" 
+                                        Foreground="White" 
+                                        BorderBrush="#2196F3" 
+                                        BorderThickness="1" 
+                                        Click="UpdateCustomer_Click"
+                                        Cursor="Hand"
+                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"/>
+                                <Button Content="Delete Customer" 
+                                        Margin="0,0,0,10" 
+                                        Padding="15" 
+                                        FontSize="16" 
+                                        Width="200" 
+                                        Background="#F44336" 
+                                        Foreground="White" 
+                                        BorderBrush="#F44336" 
+                                        BorderThickness="1" 
+                                        Click="DeleteCustomer_Click"
+                                        Cursor="Hand"
+                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- DataGrid -->
+                        <DataGrid x:Name="dgCustomers" 
+                                  AutoGenerateColumns="True" 
+                                  Margin="20" 
+                                  Grid.Row="1" 
+                                  Grid.Column="0" 
+                                  Grid.ColumnSpan="2" 
+                                  Background="White" 
+                                  BorderBrush="#B0BEC5" 
+                                  BorderThickness="1"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  CanUserResizeColumns="True"
+                                  CanUserResizeRows="False"
+                                  SelectionChanged="dgCustomers_SelectionChanged"
+                                  RowBackground="White"
+                                  FontSize="14"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+
+            <!-- Trainers Tab -->
+            <TabItem Header="Trainers">
+                <Grid>
+                    <!-- Form and Buttons -->
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- Form and Buttons -->
+                            <RowDefinition Height="*"/>
+                            <!-- DataGrid -->
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Form and Buttons -->
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Input Fields -->
+                            <StackPanel Orientation="Vertical" Margin="0" Grid.Column="0" HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Label Content="Name:" VerticalAlignment="Center" Width="100"/>
+                                    <TextBox x:Name="txtTrainerName" 
+                                 Tag="Name" 
+                                 Margin="0,0,0,0" 
+                                 Padding="12" 
+                                 FontSize="16" 
+                                 Width="350" 
+                                 BorderBrush="#B0BEC5" 
+                                 BorderThickness="1"
+                                 Background="White"
+                                 Foreground="#333333"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Label Content="Age:" VerticalAlignment="Center" Width="100"/>
+                                    <TextBox x:Name="txtTrainerAge" 
+                                 Tag="Age" 
+                                 Margin="0,0,0,0" 
+                                 Padding="12" 
+                                 FontSize="16" 
+                                 Width="350" 
+                                 BorderBrush="#B0BEC5" 
+                                 BorderThickness="1"
+                                 Background="White"
+                                 Foreground="#333333"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Label Content="Gender:" VerticalAlignment="Center" Width="100"/>
+                                    <ComboBox x:Name="cmbTrainerGender" 
+                                  Margin="0,0,0,0" 
+                                  Padding="12" 
+                                  FontSize="16" 
+                                  Width="350" 
+                                  BorderBrush="#B0BEC5" 
+                                  BorderThickness="1"
+                                  Background="White"
+                                  Foreground="#333333">
+                                        <ComboBoxItem Content="Male"/>
+                                        <ComboBoxItem Content="Female"/>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Label Content="Email:" VerticalAlignment="Center" Width="100"/>
+                                    <TextBox x:Name="txtTrainerEmail" 
+                                 Tag="Email" 
+                                 Margin="0,0,0,0" 
+                                 Padding="12" 
+                                 FontSize="16" 
+                                 Width="350" 
+                                 BorderBrush="#B0BEC5" 
+                                 BorderThickness="1"
+                                 Background="White"
+                                 Foreground="#333333"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Label Content="Phone:" VerticalAlignment="Center" Width="100"/>
+                                    <TextBox x:Name="txtTrainerPhone" 
+                                 Tag="Phone" 
+                                 Margin="0,0,0,0" 
+                                 Padding="12" 
+                                 FontSize="16" 
+                                 Width="350" 
+                                 BorderBrush="#B0BEC5" 
+                                 BorderThickness="1"
+                                 Background="White"
+                                 Foreground="#333333"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Label Content="Salary:" VerticalAlignment="Center" Width="100"/>
+                                    <TextBox x:Name="txtTrainerSalary" 
+                                 Tag="Salary" 
+                                 Margin="0,0,0,0" 
+                                 Padding="12" 
+                                 FontSize="16" 
+                                 Width="350" 
+                                 BorderBrush="#B0BEC5" 
+                                 BorderThickness="1"
+                                 Background="White"
+                                 Foreground="#333333"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Buttons -->
+                            <StackPanel Orientation="Vertical" 
+                            Margin="0,0,20,0" 
+                            Grid.Column="1"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right">
+                                <Button Content="Add Trainer" 
+                            Margin="0,0,0,10" 
+                            Padding="15" 
+                            FontSize="16" 
+                            Width="200" 
+                            Background="#4CAF50" 
+                            Foreground="White" 
+                            BorderBrush="#4CAF50" 
+                            BorderThickness="1" 
+                            Click="AddTrainer_Click"
+                            Cursor="Hand"
+                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"/>
+                                <Button Content="Update Trainer" 
+                            Margin="0,0,0,10" 
+                            Padding="15" 
+                            FontSize="16" 
+                            Width="200" 
+                            Background="#2196F3" 
+                            Foreground="White" 
+                            BorderBrush="#2196F3" 
+                            BorderThickness="1" 
+                            Click="UpdateTrainer_Click"
+                            Cursor="Hand"
+                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"/>
+                                <Button Content="Delete Trainer" 
+                            Margin="0,0,0,10" 
+                            Padding="15" 
+                            FontSize="16" 
+                            Width="200" 
+                            Background="#F44336" 
+                            Foreground="White" 
+                            BorderBrush="#F44336" 
+                            BorderThickness="1" 
+                            Click="DeleteTrainer_Click"
+                            Cursor="Hand"
+                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- DataGrid -->
+                        <DataGrid x:Name="dgTrainers" 
+                      AutoGenerateColumns="True" 
+                      Margin="20" 
+                      Grid.Row="1" 
+                      Grid.Column="0" 
+                      Grid.ColumnSpan="2" 
+                      Background="White" 
+                      BorderBrush="#B0BEC5" 
+                      BorderThickness="1"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      SelectionChanged="dgTrainers_SelectionChanged"
+                      RowBackground="White"
+                      FontSize="14"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Training Sessions">
+                <Grid>
+                    <!-- Form and Buttons -->
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- Form and Buttons -->
+                            <RowDefinition Height="*"/>
+                            <!-- DataGrid -->
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Form and Buttons -->
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Input Fields -->
+                            <StackPanel Orientation="Vertical" Margin="0" Grid.Column="0" HorizontalAlignment="Left">
+                                <!-- Customer ID ComboBox -->
+                                <Label Content="Customer ID" Margin="0,0,0,5" FontSize="16" Foreground="#333333"/>
+                                <ComboBox x:Name="cmbCustomerID"
+                        Width="350"
+                        Margin="0,0,0,10"
+                        Padding="12"
+                        FontSize="16"
+                        BorderBrush="#B0BEC5"
+                        BorderThickness="1"
+                        Background="White"
+                        Foreground="#333333"
+                        DisplayMemberPath="Name"
+                        SelectedValuePath="CustomerID"
+                        SelectedValue="{Binding Path=CustomerID, Mode=TwoWay}" />
+
+                                <!-- Trainer ID ComboBox -->
+                                <Label Content="Trainer ID" Margin="0,0,0,5" FontSize="16" Foreground="#333333"/>
+                                <ComboBox x:Name="cmbTrainerID"
+                        Width="350"
+                        Margin="0,0,0,10"
+                        Padding="12"
+                        FontSize="16"
+                        BorderBrush="#B0BEC5"
+                        BorderThickness="1"
+                        Background="White"
+                        Foreground="#333333"
+                        DisplayMemberPath="Name"
+                        SelectedValuePath="TrainerID"
+                        SelectedValue="{Binding Path=TrainerID, Mode=TwoWay}" />
+
+                                <!-- Session Timing TextBox -->
+                                <Label Content="Session Timing" Margin="0,0,0,5" FontSize="16" Foreground="#333333"/>
+                                <TextBox x:Name="txtSessionTiming" 
+                        Margin="0,0,0,10" 
+                        Padding="12" 
+                        FontSize="16" 
+                        Width="350" 
+                        BorderBrush="#B0BEC5" 
+                        BorderThickness="1"
+                        Background="White"
+                        Foreground="#333333"/>
+
+                                <!-- Start Date DatePicker -->
+                                <Label Content="Start Date" Margin="0,0,0,5" FontSize="16" Foreground="#333333"/>
+                                <DatePicker x:Name="dpStartDate" 
+                        Margin="0,0,0,10" 
+                        Padding="12" 
+                        FontSize="16" 
+                        Width="350" 
+                        BorderBrush="#B0BEC5" 
+                        BorderThickness="1"
+                        Background="White"
+                        Foreground="#333333"/>
+
+                                <!-- End Date DatePicker -->
+                                <Label Content="End Date" Margin="0,0,0,5" FontSize="16" Foreground="#333333"/>
+                                <DatePicker x:Name="dpEndDate" 
+                        Margin="0,0,0,10" 
+                        Padding="12" 
+                        FontSize="16" 
+                        Width="350" 
+                        BorderBrush="#B0BEC5" 
+                        BorderThickness="1"
+                        Background="White"
+                        Foreground="#333333"/>
+
+                                <!-- Session Status TextBox -->
+                                <Label Content="Session Status" Margin="0,0,0,5" FontSize="16" Foreground="#333333"/>
+                                <TextBox x:Name="txtSessionStatus" 
+                        Margin="0,0,0,10" 
+                        Padding="12" 
+                        FontSize="16" 
+                        Width="350" 
+                        BorderBrush="#B0BEC5" 
+                        BorderThickness="1"
+                        Background="White"
+                        Foreground="#333333"/>
+                            </StackPanel>
+
+                            <!-- Buttons -->
+                            <StackPanel Orientation="Vertical" 
+                    Margin="0,0,20,0" 
+                    Grid.Column="1"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right">
+                                <Button Content="Add Session" 
+                        Margin="0,0,0,10" 
+                        Padding="15" 
+                        FontSize="16" 
+                        Width="200" 
+                        Background="#4CAF50" 
+                        Foreground="White" 
+                        BorderBrush="#4CAF50" 
+                        BorderThickness="1" 
+                        Click="AddSession_Click"
+                        Cursor="Hand"
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"/>
+                                <Button Content="Update Session" 
+                        Margin="0,0,0,10" 
+                        Padding="15" 
+                        FontSize="16" 
+                        Width="200" 
+                        Background="#2196F3" 
+                        Foreground="White" 
+                        BorderBrush="#2196F3" 
+                        BorderThickness="1" 
+                        Click="UpdateSession_Click"
+                        Cursor="Hand"
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"/>
+                                <Button Content="Delete Session" 
+                        Margin="0,0,0,10" 
+                        Padding="15" 
+                        FontSize="16" 
+                        Width="200" 
+                        Background="#F44336" 
+                        Foreground="White" 
+                        BorderBrush="#F44336" 
+                        BorderThickness="1" 
+                        Click="DeleteSession_Click"
+                        Cursor="Hand"
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- DataGrid -->
+                        <DataGrid x:Name="dgTrainingSessions" 
+                AutoGenerateColumns="False" 
+                Margin="20" 
+                Grid.Row="1" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="2" 
+                Background="White" 
+                BorderBrush="#B0BEC5" 
+                BorderThickness="1"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                CanUserResizeColumns="True"
+                CanUserResizeRows="False"
+                SelectionChanged="dgTrainingSessions_SelectionChanged"
+                RowBackground="White"
+                FontSize="14">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Session ID" Binding="{Binding SessionID}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="Customer ID" Binding="{Binding CustomerID}" />
+                                <DataGridTextColumn Header="Trainer ID" Binding="{Binding TrainerID}" />
+                                <DataGridTextColumn Header="Session Timing" Binding="{Binding SessionTiming}" />
+                                <DataGridTextColumn Header="Start Date" Binding="{Binding TrainingStartDate}" />
+                                <DataGridTextColumn Header="End Date" Binding="{Binding TrainingEndDate}" />
+                                <DataGridTextColumn Header="Status" Binding="{Binding SessionStatus}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+
+
+
+
+
+
+
+        </TabControl>
+    </Grid>
+</Window>
